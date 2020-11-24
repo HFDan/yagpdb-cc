@@ -21,6 +21,7 @@ For more info on GNU GPL v3.0 visit https://choosealicense.com/licenses/gpl-3.0/
 {{$embedColor := 0x05B8CC}}                                     {{/*The color of the embed*/}}
 {{$reactionYes := "✅"}}                                                {{/*The reaction to act as "Yes"  NOTE: If the reaction is a custom emoji, write it in this way: ":emojiName:EmojiID"*/}}
 {{$reactionNo := "❌"}}                                                 {{/*The reaction to act as "No"   NOTE: If the reaction is a custom emoji, write it in this way: ":emojiName:EmojiID"*/}}
+{{$footerText := printf "React with %s to upvote the suggestion and %s to downvote" $reactionYes $reactionNo}}                                            {{/*Text to show as footer. Use printf to concatenate strings*/}}
 {{/*CONFIG END*/}}
  
 {{/*Argument Parsing*/}}
@@ -30,7 +31,7 @@ For more info on GNU GPL v3.0 visit https://choosealicense.com/licenses/gpl-3.0/
 {{if $args.IsSet 0}}
 {{deleteTrigger 0}}
         {{if targetHasRoleID .User.ID 779792628673544232}}
-            {{$suggestionMessage := sendMessageRetID nil (complexMessage "content" "" "embed" (cembed "title" "Suggestion:" "description" (printf "%s"  ($args.Get 0)) "timestamp" (currentTime) "author" (sdict "name" (.User.Username) "icon_url" (printf "https://cdn.discordapp.com/avatars/%s/%s.png" (toString .User.ID) (.User.Avatar))) "color" $embedColor))}}
+            {{$suggestionMessage := sendMessageRetID nil (complexMessage "content" "" "embed" (cembed "title" "Suggestion:" "description" (printf "%s"  ($args.Get 0)) "timestamp" (currentTime) "author" (sdict "name" (.User.Username) "icon_url" (printf "https://cdn.discordapp.com/avatars/%s/%s.png" (toString .User.ID) (.User.Avatar))) "footer" (sdict "text" (printf "%s" $footerText)) "color" $embedColor))}}
             {{addMessageReactions nil $suggestionMessage $reactionYes $reactionNo}}
         {{else}}
             {{$errorMessage := sendMessageRetID nil $noMemberRoleErrorMsg}}
