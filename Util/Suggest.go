@@ -30,7 +30,7 @@ For more info on GNU GPL v3.0 visit https://choosealicense.com/licenses/gpl-3.0/
 {{if $args.IsSet 0}}
 {{deleteTrigger 0}}
         {{if targetHasRoleID .User.ID 779792628673544232}}
-            {{$suggestionMessage := sendMessageRetID nil (complexMessage "content" "" "embed" (cembed "title" "Sugestie:" "description" (printf "%s"  ($args.Get 0)) "timestamp" (currentTime) "author" (sdict "name" (.User.Username) "icon_url" (printf "https://cdn.discordapp.com/avatars/%s/%s.png" (toString .User.ID) (.User.Avatar))) "color" $embedColor))}}
+            {{$suggestionMessage := sendMessageRetID nil (complexMessage "content" "" "embed" (cembed "title" "Suggestion:" "description" (printf "%s"  ($args.Get 0)) "timestamp" (currentTime) "author" (sdict "name" (.User.Username) "icon_url" (printf "https://cdn.discordapp.com/avatars/%s/%s.png" (toString .User.ID) (.User.Avatar))) "color" $embedColor))}}
             {{addMessageReactions nil $suggestionMessage $reactionYes $reactionNo}}
         {{else}}
             {{$errorMessage := sendMessageRetID nil $noMemberRoleErrorMsg}}
