@@ -3,17 +3,6 @@
     Trigger: "suggest"    
 */}}
 
-{{/*This command is under the GNU GPL v3.0 License.
-You may: Modify it,
-Distribute it,
-Patent it (provided you do not bring suit for patent infringement against anyone for making, using or distributing their own works based on the Program).
-
-All of that as long as you: Disclose source,
-Release your modification under the same GNU GPL v3.0 license
-and state every modification you made.
-
-For more info on GNU GPL v3.0 visit https://choosealicense.com/licenses/gpl-3.0/ */}}
-
 {{/*CONFIG START*/}}
 {{$channel := 780464794514882560}}                        {{/*channel to send message to*/}}
 {{$memberRole := 779792628673544232}}              {{/*Member role. If you want everyone to run the command, set it to the ID of the @everyone role*/}}
